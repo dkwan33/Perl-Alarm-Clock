@@ -10,7 +10,7 @@ use Browser::Open qw( open_browser );
 
 #DESCRIPTION  ------------------------------------------------------------------
 #A simple alarm clock implementation in perl.
-#The alarm will open a browser window to a "random" youtube link
+#The alarm will open a browser window to a "random" song.
 #The list of available songs can be modified or else a default will be created
 
 #USAGE -------------------------------------------------------------------------
