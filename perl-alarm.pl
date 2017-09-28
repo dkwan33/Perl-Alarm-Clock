@@ -23,11 +23,11 @@ use Browser::Open qw( open_browser );
 # is acting weird and not displaying the line at all.
 
 #PROGRAM START -----------------------------------------------------------------
-my $ytfile = 'YT.txt';
-print "YT.txt file does not exist, creating it...\n" unless -e $ytfile;
-open (YTFILEH, '>>', $ytfile) or die $!;
-print YTFILEH 'https://www.youtube.com/watch?v=0JQ0xnJyb0A' unless -s $ytfile; #if file is empty: add default song
-close YTFILEH or die $!;
+my $songfile = 'songs.txt';
+print "songs.txt file does not exist, creating it...\n" unless -e $songfile;
+open (SFILEH, '>>', $songfile) or die $!;
+print SFILEH 'https://www.youtube.com/watch?v=0JQ0xnJyb0A' unless -s $songfile; #if file is empty: add default song
+close SFILEH or die $!;
 
 my ($alarm, $a_hour, $a_min) = (0,00,00);
 do  {
@@ -63,9 +63,9 @@ do {
 } until ($hour eq $a_hour && $min eq $a_min);
 print "WAKE UP!\n";
 
-open (YTFILEH, '<', $ytfile) or die $!;
-chomp(my @songs = <YTFILEH>);
-close YTFILEH or die $!;
+open (SFILEH, '<', $songfile) or die $!;
+chomp(my @songs = <SFILEH>);
+close SFILEH or die $!;
 
 open_browser($songs[rand @songs]);
 
