@@ -50,16 +50,11 @@ print "Alarm accepted, I will wake you up at $alarm\n";
 my ($sec,$min,$min_display,$hour,$mday,$mon,$year,$wday,$yday,$isdst);
 my $switch = ':';
 do {
-	#refresh the current time
-	($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time); 
-	#add a 0 to the minute display if its a single digit
-	($min =~ /^\d$/) ? ($min_display = "0".$min) : ($min_display = $min); 
-
+	($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time); #refresh the current time
+	($min =~ /^\d$/) ? ($min_display = "0".$min) : ($min_display = $min); #add a 0 to the minute display if its a single digit
 	print "Current time is " . $hour.$switch.$min_display . "\n"; #cant figure out why a carriage return here doesnt work as intended
- 
- 	#make the ':' blink every second
-	($switch eq ':') ? ($switch = ' ') : ($switch = ':');
-	sleep 1; #program will crash if you delete this
+	($switch eq ':') ? ($switch = ' ') : ($switch = ':'); #make the ':' blink every second
+	sleep 1; #perl interpreter will crash if you delete this
 } until ($hour eq $a_hour && $min eq $a_min);
 print "WAKE UP!\n";
 
